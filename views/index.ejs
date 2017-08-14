@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Home Page</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-        <p>Welcome to <%= title %></p>
+    <% include navigate.ejs %>
+        <p>Welcome to Home Page</p>
         <form action="/about">
             <input type="submit" value="INFO PAGE" />
         </form><br/>

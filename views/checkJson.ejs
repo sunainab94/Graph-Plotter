@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Check Json</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <% include navigate.ejs %>
+    <form id="dataUpload" method="post" action="/checkJson">
+            <textarea id="jsondata" rows="20" name="datatextarea"><%= jsonString %></textarea>
+            <br>
+            <input type="submit" value="Submit"/>
+    </form>
+    <%= status%>
+  </body>
+</html>
