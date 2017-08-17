@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Check Json</title>
+    <title>Pick your Graph</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <% include navigate.ejs %>
+    <div class="form-group">
     <form id="dataUpload" method="post" action="/checkJson">
-            <textarea id="jsondata" rows="20" name="datatextarea"><%= jsonString %></textarea>
+            <textarea class="form-control" id="jsondata" rows="20" name="datatextarea"><%= jsonString %></textarea>
             <br>
-            <input type="submit" value="Submit"/>
+            <input class="btn btn-primary" type="submit" value="Submit"/>
     </form>
+          </div>
     <%= status%>
+    <% if(availabilityStatus){ %>
+      <form id="getChart" method="post">
+        <div class="form-group">
+        <textarea class="form-control" id="jsondata" rows="2" name="jsontext" style="display:none;"><%= jsonString %></textarea>
+          <% var graphTypes = graph.split("$");
+            for(var temp in graphTypes){ %>
+          <div class="radio">
+            <label><input type="radio" name="graphType" value="<%= graphTypes[temp] %>"><%= graphTypes[temp] %></label>
+          </div>
+          <% } %>
+          <input class="btn btn-primary" type="submit" value="Submit"/>     
+        </div>
+      </form>    
+    <% } %>
   </body>
 </html>

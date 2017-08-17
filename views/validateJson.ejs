@@ -7,10 +7,11 @@
   <body>
     <% include navigate.ejs %>
     <br><br>
+    <div class="form-group">
     <form action="/validateJson" method="post" id="formId">
-        <input type="submit">
+      <textarea class="form-control" rows="5" cols="50" name="JsonText"></textarea>
+        <input class="btn btn-primary" type="submit">
     </form>
-    <textarea rows="5" cols="50" name="JsonText" form="formId"></textarea>
     <%= status%>
   </body>
 </html>
