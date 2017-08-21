@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var about = require('./routes/about');
 var validate = require('./routes/validateJson');
 var checkjs = require('./routes/checkJson');
+var chooseChart = require('./routes/chooseChart');
 
 var app = express();
 
@@ -23,6 +24,19 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(async (req, res, next) => {
+  if (! app.db) {
+    const mysql = require('mysql2/promise');
+    app.db = await mysql.createPool({
+      connectionLimit: 50,
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'charts' });
+  }
+  req.db = app.db;
+  return next();
+});
+/*app.use(async (req, res, next) => {
   if (!app.db) {
     const mysql = require('mysql2/promise');
     app.db = await mysql.createPool({
@@ -32,17 +46,16 @@ app.use(async (req, res, next) => {
       password: 'testuser123',
       database: 'Charts'
     });
-
   }
-  console.log(app.db);
   req.db = app.db;
   return next();
-});
+});*/
 
 app.use('/', index);
 app.use('/about', about);
 app.use('/validateJson', validate);
 app.use('/checkJson', checkjs);
+app.use('/chooseChart',chooseChart);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

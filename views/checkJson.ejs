@@ -15,7 +15,7 @@
           </div>
     <%= status%>
     <% if(availabilityStatus){ %>
-      <form id="getChart" method="post">
+      <form id="getChart" method="post" action="/chooseChart">
         <div class="form-group">
         <textarea class="form-control" id="jsondata" rows="2" name="jsontext" style="display:none;"><%= jsonString %></textarea>
           <% var graphTypes = graph.split("$");

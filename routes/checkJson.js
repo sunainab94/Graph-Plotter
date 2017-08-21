@@ -101,7 +101,6 @@ function isJson(str) {
     }
     return true;
 }
-module.exports = router;
 
 function depthCheck(obj){
     var depth = 0;

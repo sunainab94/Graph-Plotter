@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Plot Graph</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='<%= cssFile%>'/>
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+  </head>
+<body>
+    <% include navigate.ejs %>
+    <p id="data" style="display:none;"><%= jsonStr%></p>
+
+    <p id="axis" style="display:none;"><%= axis%></p>
+    <script type="text/javascript" src="<%= jsFile%>"></script>
+</body>
+</html>
